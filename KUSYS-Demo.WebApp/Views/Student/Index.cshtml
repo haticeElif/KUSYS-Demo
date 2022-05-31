@@ -1,0 +1,122 @@
+﻿@model IEnumerable<StudentViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section breadcrumbs{
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Öğrenci İşlemleri</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">Öğrenci İşlemleri</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+    <section class="content px-3">
+        <!-- Default box -->
+        <div class="card card-outline card-dark">
+            <div class="card-header">
+                <div class="form-inline float-right d-none d-sm-block">
+                    <a asp-action="CreateOrUpdate" class="btn btn-success">
+                                                    <i class="fa fa-plus-circle"></i> New
+                                                </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                                <table id="dtEntities" class="table w-100">
+
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FirstName)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.LastName)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.BirthDate)
+                                            </th>
+                                            <th>
+                                                
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FirstName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LastName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.BirthDate)
+                                            </td>
+                                            <td>
+                                                <form asp-action="Delete" asp-route-id="@item.StudentId">
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-info btn-detail-modal mx-1" id="detail" data-id="@item.StudentId">
+                                                            <i class="fas fa-info"></i>
+                                                        </a>
+                                                        <a asp-action="CreateOrUpdate" asp-route-id="@item.StudentId" class="btn btn-warning  mx-1">
+                                                            <i class="far fa-edit"></i>
+                                                        </a>
+                                                        <button type="submit" class="btn btn-danger mx-1"
+                                                            onclick="return confirm('Are you sure to delete this record?')">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </button>
+                                                    </div>
+                                                </form>
+
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <script>
+        $(".btn-detail-modal").click(function () {
+            var id = $(this).data('id');
+            $.ajax({
+                data: { 'id': id },
+                url: '@Url.Action("Detail","Student")',
+                success: function (res) {
+                    if (res.status == 'Successful') {
+                        bootbox.dialog({
+                            title: 'Detay',
+                            message: res.page,
+                            className: 'modal-primary',
+                            size: 'large'
+                        });
+                    } else {
+                    }
+                },
+                beforeSend: function () {
+                },
+                complete: function () {
+                },
+                error: function (request, status, error) {
+                }
+            });
+        });
+    </script>
+}

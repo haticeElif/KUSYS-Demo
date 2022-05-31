@@ -1,0 +1,76 @@
+﻿@model KUSYS_Demo.WebApp.Models.StudentViewModel
+
+@{
+    ViewData["Title"] = "Transaction";
+}
+
+@section breadcrumbs{
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Öğrenciye Kurs Atama</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">Öğrenciye Kurs Atama</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+}
+
+
+<section class="content px-3">
+        <!-- Default box -->
+        <div class="card card-outline card-dark">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+        <form asp-action="CreateOrUpdate" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<input type="hidden" asp-for="StudentId" />*@
+            <div class="form-group mb-4">
+            <label asp-for="FirstName" class="control-label"></label>
+                <select id="drpList" class="form-control" asp-for="StudentId" asp-items="@(new SelectList(Model.StudentList, "Value", "Text"))">  
+                </select>  
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseName" class="control-label"></label>
+                
+                <select id="drpCourseList" class="form-control" asp-for="CourseId" asp-items="@(new SelectList(Model.CourseList, "Value", "Text"))">  
+                  <option value="">--Select--</option>  
+                </select>  
+
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary w-100" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary  w-100">View All</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+
+@if (ViewBag.Message != null)  
+    {  
+        <script type="text/javascript">  
+            window.onload = function () {  
+                alert("@ViewBag.Message");  
+            };  
+        </script>  
+    }  
+}

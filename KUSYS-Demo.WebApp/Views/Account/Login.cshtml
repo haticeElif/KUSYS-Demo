@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sterk | Login</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="~/adminLte_template/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="~/adminLte_template/plugins/datatables-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/adminLte_template/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+    <link href="~/adminLte_template/plugins/icheck-bootstrap/icheck-bootstrap.min.css" rel="stylesheet" />
+
+    @*<link href="~/Content/Admin/AdminTemplate/plugins/overlayScrollbars/css/OverlayScrollbars.min.css" rel="stylesheet" />*@
+    <link href="~/adminLte_template/dist/css/adminlte.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    @*<link href="~/Content/login-template.css" rel="stylesheet" />*@
+
+    <!-- Loading -->
+    <link href="~/loading.js/loading.css" rel="stylesheet" />
+    <!-- alertify -->
+    <link href="~/alertify/alertify.min.css" rel="stylesheet" />
+    <!-- toastr -->
+    <link href="~/toastr/toastr.min.css" rel="stylesheet" />
+    <!-- spinner -->
+    <link href="~/css/admin/spinner.css" rel="stylesheet" />
+     
+</head>
+<body class="hold-transition login-page login-background">
+   <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <div class="login-box-content">
+                <p class="login-box-msg">
+                    Giriş
+                </p>
+
+                <form action="/Account/Login" method="post">
+                    <div class="form-group">
+                        <label>Kullanıcı Adı</label>
+                        <input type="text" class="form-control" name="Username" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label>Şifre</label>
+                        <input type="password" name="Password" class="form-control" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" name="name" value="Giriş" />
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/adminLte_template/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/adminLte_template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/Content/Admin/AdminTemplate/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>*@
+    <!-- AdminLTE App -->
+    <script src="~/adminLte_template/dist/js/adminlte.min.js"></script>
+
+    <!-- Validation -->
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- alertify -->
+    <script src="~/alertify/alertify.js"></script>
+    <!-- toastr -->
+    <script src="~/toastr/toastr.min.js"></script>
+    <!-- bootbox -->
+    <script src="~/bootbox/bootbox.js"></script>
+
+
+
+     
+</body>
+</html>

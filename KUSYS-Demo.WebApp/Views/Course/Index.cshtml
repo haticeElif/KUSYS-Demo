@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CourseViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section breadcrumbs{
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Kurslar</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">Kurslar</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+}
+
+<section class="content px-3">
+        <!-- Default box -->
+        <div class="card card-outline card-dark">
+            <div class="card-header">
+                <div class="form-inline float-right d-none d-sm-block">
+                    <a asp-action="CreateOrUpdate" asp-route-id="0" class="btn btn-success">
+                            <i class="fa fa-plus-circle"></i> New
+                        </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                                <table id="dtEntities" class="table w-100">
+
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CourseName)
+                    </th>
+                    <th>
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseName)
+                        </td>
+                        <td>
+                            <form asp-action="Delete" asp-route-id="@item.CourseId">
+                                <div class="btn-group">
+                                    <a asp-action="CreateOrUpdate" asp-route-id="@item.CourseId" class="btn btn-warning">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure to delete this record?')">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+</section>
+

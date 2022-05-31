@@ -1,0 +1,66 @@
+﻿@model KUSYS_Demo.WebApp.Models.CourseViewModel
+
+@{
+    ViewData["Title"] = "Transaction";
+}
+
+
+@section breadcrumbs{
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Kurslar</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">Kurslar</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+}
+
+<section class="content px-3">
+        <!-- Default box -->
+        <div class="card card-outline card-dark">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+        <h1>Transaction</h1>
+        <form asp-action="CreateOrUpdate" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ControlId" />
+            <div class="form-group">
+                <label asp-for="CourseId" class="control-label"></label>
+                <input asp-for="CourseId" class="form-control" />
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+            </div>
+            @*<input type="hidden" asp-for="CourseName" />*@
+            <div class="form-group">
+                <label asp-for="CourseName" class="control-label"></label>
+                <input asp-for="CourseName" class="form-control" />
+                <span asp-validation-for="CourseName" class="text-danger"></span>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary w-100" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary  w-100">View All</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

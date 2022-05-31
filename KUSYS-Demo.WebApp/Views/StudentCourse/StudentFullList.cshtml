@@ -1,0 +1,71 @@
+﻿@model IEnumerable<StudentViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section breadcrumbs{
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Tüm Öğrenciler</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">Tüm Öğrenciler</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+}
+
+
+<section class="content px-3">
+        <!-- Default box -->
+        <div class="card card-outline card-dark">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                                <table id="dtEntities" class="table w-100">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BirthDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CourseName)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BirthDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseName)
+                        </td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+</section>
